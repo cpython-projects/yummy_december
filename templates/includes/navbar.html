@@ -1,0 +1,7 @@
+<nav id="navbar" class="navbar">
+    <ul>
+        {% for item in main_menu %}
+            <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>

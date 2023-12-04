@@ -2,7 +2,11 @@ from django.shortcuts import render
 from .models import Dish, DishCategory
 
 
-# Create your views here.
 def main(request):
-    category = DishCategory.objects.filter(is_visible=True)
-    return render(request, 'yummy_main.html')
+    categories = DishCategory.objects.filter(is_visible=True)
+
+    context = {
+        'categories': categories,
+    }
+
+    return render(request, 'yummy_main.html', context=context)
