@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import RegexValidator
 
 
 class DishCategory(models.Model):
@@ -48,6 +49,32 @@ class Gallery(models.Model):
     photo = models.ImageField(upload_to='gallery/')
     is_visible = models.BooleanField(default=True)
     title = models.CharField(max_length=255, blank=True)
+
+
+class Reservation(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_regex = RegexValidator(regex=r'^\+?\d{7,12}$',
+                                 message='Phone number should be in format: +380xxxxxxxxx')
+    phone = models.CharField(validators=[phone_regex, ], max_length=20)
+    date = models.DateField()
+    time = models.TimeField()
+    people = models.PositiveSmallIntegerField()
+    message = models.TextField(max_length=500, blank=True)
+
+    is_precessed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.name} - {self.phone}'
+
+    class Meta:
+        ordering = ('-created_at', )
+
+
+
+
 
 
 
