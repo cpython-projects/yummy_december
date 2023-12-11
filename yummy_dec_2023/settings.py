@@ -43,6 +43,8 @@ INSTALLED_APPS = [
 
     'yummy.apps.YummyConfig',
     'main_app.apps.MainAppConfig',
+    'account.apps.AccountConfig',
+    'manager.apps.ManagerConfig',
 ]
 
 CKEDITOR_CONFIGS = {

@@ -3,5 +3,16 @@
         {% for item in main_menu %}
             <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
         {% endfor %}
+
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'registration' %}">Sign up</a></li>
+        {% endif %}
+
+        {% if user.groups.all.0.name == 'manager' %}
+        <li><a href="{% url 'manager:index' %}">Managers</a></li>
+        {% endif %}
     </ul>
 </nav>

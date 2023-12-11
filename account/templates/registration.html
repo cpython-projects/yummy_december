@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="col-lg-8 d-flex align-items-center reservation-form-bg">
+        <form method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            {% csrf_token %}
+            <div class="form-error">{{ form.non_field_errors }}</div>
+            <div class="row gy-4">
+                {% for f in form %}
+                    <p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
+                    <div class="form-error">{{ f.errors }}</div>
+                {% endfor %}
+            </div>
+            <div class="text-center"><button type="submit">Register</button></div>
+        </form>
+    </div>
+{% endblock %}
