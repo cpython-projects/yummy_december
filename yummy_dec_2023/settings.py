@@ -36,7 +36,7 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['django-yummy-2fac7a346ee4.herokuapp.com']
 
