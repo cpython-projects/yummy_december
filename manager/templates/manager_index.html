@@ -1,6 +1,18 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <h1>Home</h1>
-    <p>Home page content</p>
+    <div class="container mt-5">
+        <h1>Список резервацій</h1>
+        <div class="list-group mt-4">
+            {% for reservation in reservations %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ reservation.name }}</h5>
+                    <p class="mb-1">{{ reservation.phone }}</p>
+                    <p class="mb-1">Дата: {{ reservation.date }}, Час: {{ reservation.time }}</p>
+                    <p class="mb-1">Кількість гостей: {{ reservation.people }}</p>
+                    <a href="{% url 'manager:edit_reservation' reservation.id %}" class="btn btn-primary btn-sm float-right">Підтвердити</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

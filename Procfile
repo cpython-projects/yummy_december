@@ -1,0 +1,1 @@
+web: gunicorn yummy_dec_2023.wsgi --log-file - --log-level debug
